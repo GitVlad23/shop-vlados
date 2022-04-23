@@ -10,9 +10,10 @@ class MainController extends Controller
 {
     public function index()
     {
+        $user = auth('web')->user();
         $products = Product::get();
 
-        return view('/main', compact('products'));
+        return view('/main', compact('user', 'products'));
     }
 
     public function categories()
