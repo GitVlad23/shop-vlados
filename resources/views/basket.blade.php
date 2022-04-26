@@ -25,6 +25,8 @@
 		</form><br>
 	@endforeach
 	
-	<h2>Общая стоимость заказа - {{ $order->getFullPrice() }}</h3>
+	<h2>Общая стоимость заказа - {{ $order->getFullPrice() }} Рублей</h3>
+
+	<a href="{{ route('basket_place') }}" type="submit" class="btn btn-success">Перейти к оформлению заказа</a>
 
 @endsection

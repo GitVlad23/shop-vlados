@@ -21,6 +21,10 @@
 	@endguest
 
 
+	@if(session()->has('success'))
+		<p class="alert alert-success">{{ session()->get('success') }}</p><br>
+	@endif
+
 	@if(session()->has('warning'))
 		<p class="alert alert-success">{{ session()->get('warning') }}</p><br>
 	@endif

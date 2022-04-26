@@ -9,8 +9,8 @@
 	<h2>Все заказы:</h2>
 
 	@foreach($orders as $el)
-		<h3>{{ $el->name }}</h3>
-		<p>{{ $el->phone }}</p><br>
+		<p>Имя заказика: {{ $el->name }}</p>
+		<p>Телефон заказчика: {{ $el->phone }}</p><br>
 	@endforeach
 
 	<form action="{{ route('admin_logout') }}" method="GET">
