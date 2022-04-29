@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if(@auth('admin')->attempt($data))
         {
-            return redirect()->route('panel_index');
+            return redirect()->route('admin_index');
         }
 
         return redirect()->route('admin_login')->withErrors(['email' => 'Вы ввели не верные данные!']);
