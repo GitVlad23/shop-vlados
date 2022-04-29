@@ -46,7 +46,4 @@
 
 	@endisset
 
-
-
-
 @endsection

@@ -6,7 +6,8 @@
 
 	<h1>Панель администратора</h1>
 
-	<a href="{{ route('admin.categories.index') }}" type="submit" class="btn btn-success">Категории</a><br><br>
+	<a href="{{ route('admin.categories.index') }}" type="submit" class="btn btn-success">Категории</a><br>
+	<a href="{{ route('admin.products.index') }}" type="submit" class="btn btn-success">Товары</a><br><br>
 
 	<form action="{{ route('admin_logout') }}" method="GET">
 		<button type="submit" class="btn btn-primary">Выйти</button>
