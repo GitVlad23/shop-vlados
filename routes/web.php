@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\Person\OrderController;
 
 
 /*
@@ -30,6 +31,11 @@ Route::middleware('auth:web')->group(function(){
 		Route::get('/place', [BasketController::class, 'basket_confirm'])->name('basket_confirm');
 		Route::post('/remove/{id}', [BasketController::class, 'basket_remove'])->name('basket_remove');
 		});
+	});
+
+	Route::group(['prefix' => 'person'], function(){
+		Route::get('/orders/index', [OrderController::class, 'index'])->name('person_orders_index');
+		Route::get('/orders/{order}', [OrderController::class, 'show'])->name('person_order_show');
 	});
 });
 

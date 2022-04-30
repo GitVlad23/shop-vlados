@@ -21,7 +21,11 @@ Route::middleware('auth:admin')->group(function(){
 	});
 
 	Route::group(['as' => 'admin.'], function(){
+		Route::get('/admin/panel/products/create/{categoryID?}', [ProductController::class, 'create'])->name('products.create.id');
 		Route::resource('/admin/panel/products', ProductController::class);
 	});
+	
+		Route::get('/admin/panel/{order}', [PanelController::class, 'show'])->name('admin_order_show');
+
 });
 

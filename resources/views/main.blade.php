@@ -9,16 +9,30 @@
 	@auth('web')
 		<h2>Добро пожаловать, {{ $user->name }}!</h2>
 
-		<h2><a href="{{ route('logout') }}">Выйти</a></h2>
-		<h2><a href="{{ route('basket') }}">Корзина</a></h2><br>
+		<div>
+			<h2><a href="{{ route('logout') }}">Выйти</a></h2>
+			<h2><a href="{{ route('basket') }}">Корзина</a></h2>
+			<h2><a href="{{ route('person_orders_index') }}">Мои заказы</a></h2>
+		</div><br>
 	@endauth
 
-	@guest('web')
+	@auth('admin')
+		<h2>Вы зашли за Администратора.</h2>
+
 		<div>
-			<h2><a href="{{ route('login') }}">Войти</a></h2>
-			<h2><a href="{{ route('register') }}">Регистрация</a></h2>
+			<h2><a href="{{ route('admin_index') }}">Панель админиcтратора</a></h2>
+			<h2><a href="{{ route('admin_logout') }}">Выйти</a></h2>
 		</div><br>
-	@endguest
+	@endauth
+
+	@if(!auth('admin')->user())
+		@guest('web')
+			<div>
+				<h2><a href="{{ route('login') }}">Войти</a></h2>
+				<h2><a href="{{ route('register') }}">Регистрация</a></h2>
+			</div><br>
+		@endguest
+	@endif
 
 
 	@if(session()->has('success'))
@@ -34,16 +48,17 @@
 
 	<h2>Все товары:</h2>
 
-	@foreach($products as $el)
-		<h3>{{ $el->name }}</h3>
-		<p>{{ $el->description }}</p>
-		<p>{{ $el->price }} Рублей</p>
+	@foreach($category as $i)
+	<div>
+		<h2>{{ $i->name }}</h2>
 
-		<form action="{{ route('basket_add', $el->id) }}" method="POST">
-			@csrf
+		@foreach($i->products as $el)
+			<h4>{{ $el->name }}</h4>
+			<p>{{ $el->description }}</p>
+		@endforeach
+	</div>
 
-			<button type="submit" class="btn btn-success">В корзину</button>
-		</form><br>
+	<h1 style="border-top: 1px solid black; width: 50%;"></h1>
 	@endforeach
 	
 @endsection

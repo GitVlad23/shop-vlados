@@ -21,6 +21,10 @@
 		<p>Кодовое имя - {{ $el->code }}</p>
 		<p>Описание - {{ $el->description }}</p>
 
+		<form action="{{ route('admin.products.create.id', $el->id) }}" method="GET">
+			<button type="submit" class="btn btn-primary">Добавить товар</button>
+		</form>
+
 		<form action="{{ route('admin.categories.edit', $el->id) }}" method="GET">
 			<button type="submit" class="btn btn-success">Редактировать</button>
 		</form>
@@ -30,7 +34,8 @@
 			@method('DELETE')
 
 			<button type="submit" class="btn btn-danger">Удалить</button>
-		</form><br>
+		</form>
+		<h1 style="border-top: 1px solid black; width: 50%;"></h1>
 	@endforeach
 
 @endsection

@@ -40,7 +40,7 @@
 
 		<h1>Новый товар</h1>
 
-		<form action="{{ route('admin.products.index') }}" method="GET">
+		<form action="{{ URL::previous() }}" method="GET">
 			<button type="submit" class="btn btn-primary">Обратно</button>
 		</form><br><br>
 
@@ -53,7 +53,11 @@
 			<input type="text" name="price" id="price" placeholder="Цена"> Рублей<br>
 			<select name="category_id" id="category_id" class="form-control">
 				@foreach($categories as $el)
-					<option value="{{ $el->id }}">{{ $el->name }}</option>
+					<option value="{{ $el->id }}"
+						@if($categoryID == $el->id)
+							selected
+						@endif
+						>{{ $el->name }}</option>
 				@endforeach
 			</select><br><br>
 

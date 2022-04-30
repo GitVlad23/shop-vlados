@@ -10,7 +10,7 @@
 		<button type="submit" class="btn btn-primary">Обратно</button>
 	</form><br>
 
-	<form action="{{ route('admin.products.create') }}" method="GET">
+	<form action="{{ route('admin.products.create.id') }}" method="GET">
 		<button type="submit" class="btn btn-primary">Добавить новый товар</button>
 	</form><br>
 
@@ -32,7 +32,8 @@
 			@method('DELETE')
 
 			<button type="submit" class="btn btn-danger">Удалить</button>
-		</form><br>
+		</form>
+		<h1 style="border-top: 1px solid black; width: 50%;"></h1>
 	@endforeach
 
 @endsection

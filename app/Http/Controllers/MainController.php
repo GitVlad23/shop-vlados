@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 
+
 class MainController extends Controller
 {
     public function index()
     {
         $user = auth('web')->user();
+        // $products = Product::get()->sortBy('category_id');
+        $category = Category::get();
         $products = Product::get();
 
-        return view('/main', compact('user', 'products'));
+        return view('/main', compact('user', 'category', 'products'));
     }
 
     public function categories()

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 
 class Order extends Model
@@ -31,6 +32,7 @@ class Order extends Model
     {
         if($this->status == 0)
         {
+            $this->user_id = Auth::user()->id;
             $this->name = $name;
             $this->phone = $phone;
             $this->status = 1;

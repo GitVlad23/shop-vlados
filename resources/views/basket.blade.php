@@ -4,7 +4,11 @@
 
 @section('content')
 
-	<h1>Корзина</h1><br>
+	<h1>Корзина</h1>
+
+	<a href="{{ route('main') }}">На главную</a><br><br>
+
+	<h2>Товары в корзине:</h2>
 
 	@foreach($order->products as $el)
 		<h3>{{ $el->name }} ({{ $el->pivot->count }} шт.)</h3>

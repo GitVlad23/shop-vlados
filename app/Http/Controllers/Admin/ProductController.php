@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->sortBy('category_id');
 
         return view('/admin/panel/products/index', compact('products'));
     }
@@ -26,11 +26,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $categoryID = null)
     {
         $categories = Category::get();
 
-        return view('/admin/panel/products/create', compact('categories'));
+        return view('/admin/panel/products/create', compact('categories', 'categoryID', 'request'));
     }
 
     /**
