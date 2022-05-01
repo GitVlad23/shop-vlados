@@ -14,9 +14,11 @@
 
 		<h2>Товары в заказе:</h2>
 
+		<ol>
 		@foreach($order->products as $el)
-			<p>{{ $el->name }} ({{ $el->pivot->count }})</p>
+			<li><p>{{ $el->name }} ({{ $el->pivot->count }})</p></li>
 		@endforeach
+		</ol>
 
 		<form action="{{ route('admin_index') }}" method="GET">
 			<button type="submit" class="btn btn-success">Назад</button> 
@@ -31,9 +33,11 @@
 
 		<h2>Товары в заказе:</h2>
 
+		<ol>
 		@foreach($order->products as $el)
-			<p>{{ $el->name }} ({{ $el->pivot->count }})</p>
+			<li><p>{{ $el->name }} ({{ $el->pivot->count }})</p></li>
 		@endforeach
+		</ol>
 
 		<form action="{{ route('person_orders_index') }}" method="GET">
 			<button type="submit" class="btn btn-success">Назад</button> 

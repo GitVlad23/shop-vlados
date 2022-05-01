@@ -4,61 +4,53 @@
 
 @section('content')
 
-	<h1>Главная страница</h1>
+    	@if(session()->has('success'))
+			<p class="alert alert-success">{{ session()->get('success') }}</p><br>
+		@endif
 
-	@auth('web')
-		<h2>Добро пожаловать, {{ $user->name }}!</h2>
+		@if(session()->has('warning'))
+			<p class="alert alert-danger">{{ session()->get('warning') }}</p><br>
+		@endif
 
-		<div>
-			<h2><a href="{{ route('logout') }}">Выйти</a></h2>
-			<h2><a href="{{ route('basket') }}">Корзина</a></h2>
-			<h2><a href="{{ route('person_orders_index') }}">Мои заказы</a></h2>
-		</div><br>
-	@endauth
+	<div style=".center; position: relative;">
+        <div class="d-inline-flex flex-column flex-md-row align-items-center p-3 px-md-4" style="
+        margin: 0;
+        position: absolute;
+        top: 10%;
+        transform: translate(20%, 40%);
+        border-bottom: 2px solid red;
+        width: 70%;
+        ">
 
-	@auth('admin')
-		<h2>Вы зашли за Администратора.</h2>
+		<h1 style="margin-left: 33%;">Рекомендуем</h1>
 
-		<div>
-			<h2><a href="{{ route('admin_index') }}">Панель админиcтратора</a></h2>
-			<h2><a href="{{ route('admin_logout') }}">Выйти</a></h2>
-		</div><br>
-	@endauth
-
-	@if(!auth('admin')->user())
-		@guest('web')
-			<div>
-				<h2><a href="{{ route('login') }}">Войти</a></h2>
-				<h2><a href="{{ route('register') }}">Регистрация</a></h2>
-			</div><br>
-		@endguest
-	@endif
-
-
-	@if(session()->has('success'))
-		<p class="alert alert-success">{{ session()->get('success') }}</p><br>
-	@endif
-
-	@if(session()->has('warning'))
-		<p class="alert alert-success">{{ session()->get('warning') }}</p><br>
-	@endif
-
-
-	<h3><a href="{{ route('categories') }}">Категории</a></h3>
-
-	<h2>Все товары:</h2>
-
-	@foreach($category as $i)
-	<div>
-		<h2>{{ $i->name }}</h2>
-
-		@foreach($i->products as $el)
-			<h4>{{ $el->name }}</h4>
-			<p>{{ $el->description }}</p>
-		@endforeach
+		</div>
 	</div>
 
-	<h1 style="border-top: 1px solid black; width: 50%;"></h1>
-	@endforeach
+
+	<div style="
+        margin: 0;
+        position: absolute;
+        top: 25%;
+        transform: translate(10%, 20%);
+        width: 90%;
+        ">
+		@foreach($products as $el)
+		<div class="d-inline-flex flex-column flex-md-row align-items-center p-1 px-md-2" style="">
+			<div class="alert alert-danger">
+				<nav class="mt-2 mt-md-0 ms-md-auto" style="font-size: 15px;">
+					<h3>{{ $el->name }}</h3>
+					<p>{{ $el->category->name }}</p>
+
+					<form action="{{ route('basket_add', $el->id) }}" method="POST">
+					@csrf
+
+					<button type="submit" class="btn btn-success" role="button">В корзину</button>
+				</form>
+				</nav>
+			</div>
+		</div>
+		@endforeach
+	</div>
 	
 @endsection
