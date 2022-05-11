@@ -51,3 +51,34 @@
 
 	<h1 style="border-top: 1px solid black; width: 50%;"></h1>
 	@endforeach
+
+
+
+
+	@foreach($order->products as $el)
+    	<div class="d-inline-flex flex-column flex-md-row align-items-center p-1 px-md-2">
+	    	<div class="alert alert-danger" style="height: 260px;">
+				<h3>{{ $el->name }} ({{ $el->pivot->count }} шт.)</h3>
+				<h5>{{ $el->category->name }}</h5>
+				<p>Цена - {{ $el->price }} Рублей</p>
+
+				<div class="d-inline-flex flex-column flex-md-row align-items-center">
+					<form action="{{ route('basket_add', $el->id) }}" method="POST">
+						@csrf
+
+						<button type="submit" class="btn btn-success">+</button>
+					</form>
+
+					<form action="{{ route('basket_remove', $el->id) }}" method="POST">
+						@csrf
+
+						<button type="submit" class="btn btn-danger">-</button>
+					</form>
+				</div>
+
+				<div class="alert alert-warning" style="margin-top: 5%; height: 60px;">
+					<p>Стоимость - {{ $el->getPriceForCount() }} Рублей</p>
+				</div>
+			</div>
+		</div>
+		@endforeach

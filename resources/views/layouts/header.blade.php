@@ -7,7 +7,7 @@
 </head>
 <body class="bg-dark text-white">
 
-	<div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-3 text-black" style="border-bottom: 2px solid red; background-color: #b0284d;">
+	<div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-3 text-black" style="border-bottom: 2px solid brown; background-color: #b0284d;">
         <a href="/" class="p-1 text-black text-decoration-none" style="font-size: 30px;">Владос.ru</a>
 
 

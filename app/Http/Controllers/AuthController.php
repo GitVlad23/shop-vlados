@@ -30,7 +30,7 @@ class AuthController extends Controller
             return redirect()->route('main');
         }
 
-        return redirect()->route('login', compact('user'))->withErrors(['email' => 'Вы ввели неверные данные либо такого пользователя не существует!']);
+        return redirect()->route('login')->withErrors(['email' => 'Вы ввели неверные данные либо такого пользователя не существует!']);
     }
 
     public function register_process(Request $request)

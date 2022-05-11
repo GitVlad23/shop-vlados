@@ -4,19 +4,17 @@
 
 @section('content')
 
+	<div style="transform: translate(50%, 30%); width: 50%;">
     	@if(session()->has('success'))
 			<p class="alert alert-success">{{ session()->get('success') }}</p><br>
 		@endif
-
 		@if(session()->has('warning'))
 			<p class="alert alert-danger">{{ session()->get('warning') }}</p><br>
 		@endif
+	</div>
 
 	<div style=".center; position: relative;">
         <div class="d-inline-flex flex-column flex-md-row align-items-center p-3 px-md-4" style="
-        margin: 0;
-        position: absolute;
-        top: 10%;
         transform: translate(20%, 40%);
         border-bottom: 2px solid red;
         width: 70%;
@@ -30,9 +28,7 @@
 
 	<div style="
         margin: 0;
-        position: absolute;
-        top: 25%;
-        transform: translate(10%, 20%);
+        transform: translate(10%, 15%);
         width: 90%;
         ">
 		@foreach($products as $el)

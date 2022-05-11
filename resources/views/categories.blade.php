@@ -28,7 +28,7 @@
         width: 80%;
         ">
 		@foreach($categories as $el)
-		<div class="d-inline-flex flex-column flex-md-row align-items-center p-1 px-md-2" style="">
+		<div class="d-inline-flex flex-column flex-md-row align-items-center p-1 px-md-2">
 			<div class="alert alert-danger">
 				<nav class="mt-2 mt-md-0 ms-md-auto" style="font-size: 35px;">
 					<h3><a href="{{ route('category', $el->id) }}" class="text-decoration-none" style="color: black">{{ $el->name }}</a></h3>
